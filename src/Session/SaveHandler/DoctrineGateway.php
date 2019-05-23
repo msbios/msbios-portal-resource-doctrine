@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Persistence\ProvidesObjectManager;
-use MSBios\Resource\Doctrine\Entity\Session;
+use MSBios\Portal\Resource\Doctrine\Entity\Session;
 use Zend\Session\SaveHandler\SaveHandlerInterface;
 
 /**
@@ -134,7 +134,7 @@ class DoctrineGateway implements SaveHandlerInterface
     public function gc($maxlifetime)
     {
         /** @var ArrayCollection $results */
-        $results = $this->em
+        $results = $this->getObjectManager()
             ->getRepository(Session::class)
             ->findAll();
 
@@ -142,8 +142,8 @@ class DoctrineGateway implements SaveHandlerInterface
         $criteria = new Criteria;
         $criteria->andWhere($criteria->expr()->lt('modified', time() + $this->lifetime));
 
-        $this->em->remove($results->matching($criteria));
-        $this->em->flush();
+        $this->getObjectManager()->remove($results->matching($criteria));
+        $this->getObjectManager()->flush();
 
         return true;
     }
