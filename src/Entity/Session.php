@@ -6,7 +6,7 @@
 namespace MSBios\Portal\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use MSBios\Resource\Doctrine\Entity;
+use MSBios\Portal\Resource\Doctrine\Entity;
 
 /**
  * Class Session
