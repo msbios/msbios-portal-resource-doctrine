@@ -4,21 +4,21 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Resource\Doctrine\Form;
+namespace MSBios\Portal\Resource\Doctrine\Form;
 
 use DoctrineModule\Form\Element\ObjectSelect;
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use MSBios\Doctrine\ObjectManagerAwareTrait;
+use DoctrineModule\Persistence\ProvidesObjectManager;
 use MSBios\Resource\Doctrine\Entity\Module;
 use MSBios\Resource\Form\PageTypeForm as DefaultPageTypeForm;
 
 /**
  * Class PageTypeForm
- * @package MSBios\Resource\Doctrine\Form
+ * @package MSBios\Portal\Resource\Doctrine\Form
  */
 class PageTypeForm extends DefaultPageTypeForm implements ObjectManagerAwareInterface
 {
-    use ObjectManagerAwareTrait;
+    use ProvidesObjectManager;
 
     const LABEL_GENERATOR_FORMAT = '%s [%s]';
 

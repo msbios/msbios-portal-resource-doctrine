@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace MSBios\Resource\Doctrine;
+namespace MSBios\Portal\Resource\Doctrine;
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use MSBios\Factory\ModuleFactory;
