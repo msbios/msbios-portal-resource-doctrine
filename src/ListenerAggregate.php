@@ -5,8 +5,8 @@
  */
 namespace MSBios\Porta\Resource\Doctrine;
 
+use MSBios\Portal\Resource\Doctrine\Session\SaveHandler\DoctrineGateway;
 use MSBios\Resource\Doctrine\Module;
-use MSBios\Resource\Doctrine\Session\SaveHandler\DoctrineGateway;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
