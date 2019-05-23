@@ -3,10 +3,11 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
+
 namespace MSBios\Portal\Resource\Doctrine;
 
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
-use MSBios\Factory\ModuleFactory;
+use MSBios\Porta\Resource\Doctrine\ListenerAggregate;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -54,12 +55,12 @@ return [
 
     'service_manager' => [
         'factories' => [
-            Listener\SessionListener::class =>
+            ListenerAggregate::class =>
                 InvokableFactory::class,
             Session\SaveHandler\DoctrineGateway::class =>
                 Factory\DoctrineGatewayFactory::class,
-            Module::class =>
-                ModuleFactory::class
+            // Module::class =>
+            //     ModuleFactory::class
         ],
     ],
 

@@ -4,20 +4,23 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Resource\Doctrine\Session\SaveHandler;
+namespace MSBios\Portal\Resource\Doctrine\Session\SaveHandler;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
+use DoctrineModule\Persistence\ProvidesObjectManager;
 use MSBios\Resource\Doctrine\Entity\Session;
 use Zend\Session\SaveHandler\SaveHandlerInterface;
 
 /**
  * Class DoctrineGateway
- * @package MSBios\Resource\Session\SaveHandler
+ * @package MSBios\Portal\Resource\Doctrine\Session\SaveHandler
  */
 class DoctrineGateway implements SaveHandlerInterface
 {
+    use ProvidesObjectManager;
+
     /** @var  string Path */
     protected $path;
 
@@ -27,16 +30,13 @@ class DoctrineGateway implements SaveHandlerInterface
     /** @var integer Lifetime */
     protected $lifetime;
 
-    /** @var EntityManager */
-    protected $em;
-
     /**
      * DoctrineGateway constructor.
-     * @param EntityManager $entityManager
+     * @param ObjectManager $objectManager
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(ObjectManager $objectManager)
     {
-        $this->em = $entityManager;
+        $this->setObjectManager($objectManager);
     }
 
     /**
@@ -73,7 +73,7 @@ class DoctrineGateway implements SaveHandlerInterface
     public function read($id)
     {
         /** @var Session $entity */
-        if ($entity = $this->em->find(Session::class, $id)) {
+        if ($entity = $this->getObjectManager()->find(Session::class, $id)) {
             if ($entity->getModified() + $entity->getLifetime() > time()) {
                 return $entity->getValue();
             }
@@ -93,7 +93,7 @@ class DoctrineGateway implements SaveHandlerInterface
     public function write($id, $data)
     {
         /** Session */
-        if (! $entity = $this->em->find(Session::class, $id)) {
+        if (! $entity = $this->getObjectManager()->find(Session::class, $id)) {
             /** @var Session $entity */
             $entity = new Session;
         }
@@ -104,8 +104,8 @@ class DoctrineGateway implements SaveHandlerInterface
             ->setModified(time())
             ->setLifetime($this->lifetime);
 
-        $this->em->persist($entity);
-        $this->em->flush();
+        $this->getObjectManager()->persist($entity);
+        $this->getObjectManager()->flush();
 
         return true;
     }
@@ -119,9 +119,9 @@ class DoctrineGateway implements SaveHandlerInterface
     public function destroy($id)
     {
         /** @var Session $entity */
-        $entity = $this->em->find(Session::class, $id);
-        $this->em->remove($entity);
-        $this->em->flush();
+        $entity = $this->getObjectManager()->find(Session::class, $id);
+        $this->getObjectManager()->remove($entity);
+        $this->getObjectManager()->flush();
         return true;
     }
 

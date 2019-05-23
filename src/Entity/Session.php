@@ -3,16 +3,16 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace MSBios\Resource\Doctrine\Entity;
+namespace MSBios\Portal\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MSBios\Resource\Doctrine\Entity;
 
 /**
  * Class Session
- * @package MSBios\Resource\Entity
+ * @package MSBios\Portal\Resource\Doctrine\Entity
  *
- * @ORM\Entity(repositoryClass="MSBios\Resource\Doctrine\Repository\SessionRepository")
+ * @ORM\Entity(repositoryClass="MSBios\Portal\Resource\Doctrine\Repository\SessionRepository")
  * @ORM\Table(name="sys_t_sessions")
  */
 class Session extends Entity

@@ -9,8 +9,6 @@ use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Doctrine\ORM\EntityManager;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\LazyListenerAggregate;
-use Zend\Loader\AutoloaderFactory;
-use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\Mvc\ApplicationInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

@@ -4,13 +4,13 @@
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
 
-namespace MSBios\Resource\Doctrine\Repository;
+namespace MSBios\Portal\Resource\Doctrine\Repository;
 
 use MSBios\Resource\Doctrine\EntityRepository;
 
 /**
  * Class SettingRepository
- * @package MSBios\Resource\Doctrine\Repository
+ * @package MSBios\Portal\Resource\Doctrine\Repository
  */
 class SettingRepository extends EntityRepository
 {

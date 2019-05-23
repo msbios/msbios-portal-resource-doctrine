@@ -3,7 +3,7 @@
  * @access protected
  * @author Judzhin Miles <info[woof-woof]msbios.com>
  */
-namespace MSBios\Resource\Doctrine\Entity;
+namespace MSBios\Portal\Resource\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MSBios\Resource\Doctrine\Entity;
@@ -14,9 +14,9 @@ use MSBios\Resource\Doctrine\TitlebleAwareTrait;
 
 /**
  * Class Setting
- * @package MSBios\Resource\Doctrine\Entity
+ * @package MSBios\Portal\Resource\Doctrine\Entity
  *
- * @ORM\Entity(repositoryClass="MSBios\Resource\Doctrine\Repository\SettingRepository")
+ * @ORM\Entity(repositoryClass="MSBios\Portal\Resource\Doctrine\Repository\SettingRepository")
  * @ORM\Table(name="sys_t_settings")
  */
 class Setting extends Entity implements
