@@ -7,9 +7,7 @@
 namespace MSBios\Portal\Resource\Doctrine;
 
 use Doctrine\ORM\Mapping as ORM;
-use MSBios\Resource\Doctrine\EntityInterface;
-use MSBios\Resource\Doctrine\IdentifierableAwareInterface;
-use MSBios\Resource\Doctrine\IdentifierAwareTrait;
+use MSBios\Doctrine\IdentifierAwareTrait;
 
 /**
  * Class Entity
@@ -17,7 +15,7 @@ use MSBios\Resource\Doctrine\IdentifierAwareTrait;
  * @package MSBios\Portal\Resource\Doctrine
  * @ORM\MappedSuperclass
  */
-abstract class Entity implements EntityInterface, IdentifierableAwareInterface
+abstract class Entity extends \MSBios\Doctrine\Entity
 {
     use IdentifierAwareTrait;
 }
